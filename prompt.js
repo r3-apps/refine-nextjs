@@ -57,7 +57,7 @@ module.exports = {
                     hint: "Installs Medusa Data Provider.",
                 },
             ],
-            default: "data-provider-custom-json-rest",
+            default: "data-provider-remult",
         },
         {
             name: "ui-framework",
