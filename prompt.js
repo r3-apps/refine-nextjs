@@ -1,239 +1,318 @@
 module.exports = {
     prompts: [
         {
-            name: "ui",
-            message: "UI framework:",
-            type: "select",
-            pageSize: 3,
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Tailwind CSS", name: "tailwind" },
-                { message: "Bootstrap", name: "bootstrap" },
-                { message: "Chakra UI", name: "chakra-ui" },
-                { message: "Antd", name: "antd" },
-            ],
-            default: "none",
-        },
-        {
-            name: "css_features",
-            message: "CSS Preprocessor:",
+            name: "data-provider",
+            message: "Choose your backend service to connect:",
             type: "select",
             pageSize: 2,
             choices: [
                 {
-                    message: "None (built-in support for css and styled-jsx)",
-                    name: "css",
+                    message: "REST API",
+                    name: "data-provider-custom-json-rest",
+                    hint: "Installs REST API Data Provider.",
                 },
-                { message: "sass/scss", name: "scss" },
-                { message: "styled-components", name: "styled-components" },
+                {
+                    message: "GraphQL API",
+                    name: "data-provider-graphql",
+                    hint: "Installs GraphQL API Data Provider.",
+                },
+                {
+                    message: "Strapi v4",
+                    name: "data-provider-strapi-v4",
+                    hint: "Installs Strapi v4 Data Provider.",
+                },
+                {
+                    message: "nestjsx-crud",
+                    name: "data-provider-nestjsx-crud",
+                    hint: "Installs Nestjsx-crud Data Provider.",
+                },
+                {
+                    message: "Airtable",
+                    name: "data-provider-airtable",
+                    hint: "Installs Airtable Data Provider.",
+                },
+                {
+                    message: "Supabase",
+                    name: "data-provider-supabase",
+                    hint: "Installs Supabase Data Provider.",
+                },
+                {
+                    message: "Appwrite",
+                    name: "data-provider-appwrite",
+                    hint: "Installs Appwrite Data Provider.",
+                },
+                {
+                    message: "Hasura",
+                    name: "data-provider-hasura",
+                    hint: "Installs Hasura Data Provider.",
+                },
+                {
+                    message: "Medusa",
+                    name: "data-provider-medusa",
+                    hint: "Installs Medusa Data Provider.",
+                },
             ],
-            default: "css",
+            default: "data-provider-custom-json-rest",
         },
         {
-            name: "styled_specific",
-            message: "Do you also want to add styled-system ?",
+            name: "ui-framework",
+            message: "Do you want to use a UI Framework?:",
             type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "styled-system", name: "styled-system" },
-            ],
-            skip: ({ answers }) => answers.css_features !== "styled-components",
-            default: "none",
-        },
-        {
-            name: "features",
-            message: "Features:",
-            hint: "use <arrow-keys> to navigate, <space> to select.",
-            type: "multiselect",
             pageSize: 2,
             choices: [
-                { message: "Fetch (next.js built-in)", name: "fetch" },
-                { message: "Axios", name: "axios" },
-                { message: "Storybook", name: "storybook" },
-                { message: "SVGR", name: "svgr" },
-                { message: "Environment Variables", name: "env" },
-                { message: "Reverse Proxy", name: "reverse-proxy" },
-                { message: "Bundle Analyzer", name: "bundle-analyzer" },
-                { message: "Apollo GraphQL", name: "apollo-graphql" },
-                { message: "graphql-request", name: "graphql-request" },
-            ],
-            default: "none",
-        },
-        {
-            name: "hooks",
-            message: "Hooks",
-            hint: "use <arrow-keys> to navigate, <space> to select.",
-            type: "multiselect",
-            choices: [
-                { message: "SWR", name: "swr" },
-                { message: "React Query", name: "react-query" },
-                { message: "React Use", name: "react-use" },
-            ],
-            default: "none",
-        },
-        {
-            name: "state-management",
-            message: "State Management:",
-            type: "select",
-            pageSize: 3,
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Redux + Redux Toolkit", name: "redux" },
-                { message: "Recoil", name: "recoil" },
-                { message: "MobX", name: "mobx" },
-                { message: "Zustand", name: "zustand" },
-            ],
-            default: "none",
-        },
-        {
-            name: "mobx_state_tree",
-            message: "Do you want to use Mobx State Tree ?",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Mobx State Tree", name: "mobx-state-tree" },
-            ],
-            skip: ({ answers }) => answers["state-management"] !== "mobx",
-            default: "none",
-        },
-        {
-            name: "rtk-query",
-            message: "Do you want to use RTK Query ?",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "RTK Query", name: "rtk-query" },
-            ],
-            skip: ({ answers }) => answers["state-management"] !== "redux",
-            default: "none",
-        },
-        {
-            name: "i18n",
-            message: "i18n - Internationalization",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "next-translate", name: "next-translate" },
-                { message: "next-i18next", name: "next-i18next" },
-            ],
-            default: "none",
-        },
-        {
-            name: "linter",
-            message: "Linting tools:",
-            type: "multiselect",
-            hint: "use <arrow-keys> to navigate, <space> to select.",
-            pageSize: 10,
-            choices: [
-                { message: "ESLint", name: "eslint" },
-                { message: "Prettier", name: "prettier" },
-            ],
-            default: [],
-        },
-        {
-            name: "eslint_specific",
-            message: "Do you want to use lint-staged?",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Lint staged files", name: "lint-staged" },
-            ],
-            skip: ({ answers }) => !answers.linter.includes("eslint"),
-            default: "none",
-        },
-        {
-            name: "testing",
-            message: "Testing Framework:",
-            type: "select",
-            choices: [
-                { message: "None", name: "none" },
-                { message: "Jest", name: "jest" },
                 {
-                    message: "React Testing Library + Jest",
-                    name: "testing-library",
+                    message: "Headless",
+                    name: "no",
+                    hint: "No UI framework package will be installed.",
                 },
-                { message: "Enzyme + Jest", name: "enzyme" },
+                {
+                    message: "Ant Design",
+                    name: "antd",
+                    hint: "Installs Ant Design package.",
+                },
+                {
+                    message: "Material UI",
+                    name: "mui",
+                    hint: "Installs Material UI package.",
+                },
+                {
+                    message: "Mantine",
+                    name: "mantine",
+                    hint: "Installs Mantine package.",
+                },
+                {
+                    message: "Chakra UI",
+                    name: "chakra",
+                    hint: "Installs Chakra UI package.",
+                },
             ],
+            default: "no",
         },
         {
-            name: "e2etest",
-            message: "E2E Testing framework:",
+            name: "inferencer",
+            message: "Do you want to add example pages?:",
             type: "select",
             choices: [
-                { message: "None", name: "none" },
-                { message: "Cypress", name: "cypress" },
-                { message: "WebdriverIO", name: "webdriverio" },
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "inferencer",
+                    hint: "Installs example pages.",
+                },
             ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] === "no" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-medusa",
+            default: "no",
+        },
+        {
+            name: "inferencer-headless",
+            message: "Do you want to add example pages?:",
+            type: "select",
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No examples will be installed.",
+                },
+                {
+                    message: "Yes (Recommended)",
+                    name: "inferencer-headless",
+                    hint: "Installs example pages.",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["ui-framework"] !== "no" ||
+                answers["data-provider"] === "data-provider-graphql" ||
+                answers["data-provider"] === "data-provider-medusa",
+            default: "no",
+        },
+        {
+            name: "auth-provider",
+            message: "Do you need any Authentication logic?:",
+            type: "select",
+            choices: [
+                {
+                    message: "None",
+                    name: "none",
+                    hint: "No Auth Provider will be installed.",
+                },
+                {
+                    message: "Custom",
+                    name: "auth-provider-custom",
+                    hint: "Installs a mock Auth Provider.",
+                },
+                {
+                    message: "Auth0",
+                    name: "auth-provider-auth0",
+                    hint: "Installs Auth0 with NextAuth.js",
+                },
+                {
+                    message: "Google",
+                    name: "auth-provider-google",
+                    hint: "Installs Google with NextAuth.js",
+                },
+                {
+                    message: "Keycloak",
+                    name: "auth-provider-keycloak",
+                    hint: "Installs Keycloak with NextAuth.js",
+                },
+            ],
+            skip: ({ answers }) =>
+                answers["data-provider"] === "data-provider-supabase" ||
+                answers["data-provider"] === "data-provider-strapi-v4" ||
+                answers["data-provider"] === "data-provider-appwrite" ||
+                answers["data-provider"] === "data-provider-medusa" ||
+                answers["data-provider"] === "data-provider-nhost",
             default: "none",
         },
         {
-            name: "docker",
-            message: "Docker integration:",
+            name: "i18n-no",
+            message: "Do you need i18n (Internationalization) support?:",
             type: "select",
-            pageSize: 3,
+            pageSize: 2,
             choices: [
-                { message: "None", name: "none" },
-                { message: "Dockerfile", name: "Docker" },
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No i18n packages will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "i18n",
+                    hint: "Installs i18n packages.",
+                },
             ],
-            default: "none",
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "no",
         },
         {
-            name: "CI",
-            message: "Continuous integration:",
+            name: "i18n-antd",
+            message: "Do you need i18n (Internationalization) support?:",
             type: "select",
+            pageSize: 2,
             choices: [
-                { message: "None", name: "none" },
-                { message: "GitHub Actions", name: "github-actions" },
-                { message: "Travis", name: "travis" },
-                { message: "Azure Pipelines", name: "azure-pipelines" },
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No i18n packages will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "i18n-antd",
+                    hint: "Installs i18n packages.",
+                },
             ],
-            default: "none",
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "antd",
+        },
+        {
+            name: "i18n-mui",
+            message: "Do you need i18n (Internationalization) support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No i18n packages will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "i18n-mui",
+                    hint: "Installs i18n packages.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mui",
+        },
+        {
+            name: "i18n-mantine",
+            message: "Do you need i18n (Internationalization) support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No i18n packages will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "i18n-mantine",
+                    hint: "Installs i18n packages.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "mantine",
+        },
+        {
+            name: "i18n-chakra",
+            message: "Do you need i18n (Internationalization) support?:",
+            type: "select",
+            pageSize: 2,
+            choices: [
+                {
+                    message: "No",
+                    name: "no",
+                    hint: "No i18n packages will be installed.",
+                },
+                {
+                    message: "Yes",
+                    name: "i18n-chakra",
+                    hint: "Installs i18n packages.",
+                },
+            ],
+            default: "no",
+            skip: ({ answers }) => answers["ui-framework"] !== "chakra",
         },
     ],
     ignores: [
         {
-            plugin: ["css", "scss", "styled-components"],
+            plugin: ["data-provider-appwrite"],
             when: function (answers) {
-                return answers.ui !== "none";
+                return answers["ui-framework"] !== "antd";
             },
-            pattern: ["src/components/**", "pages/index.tsx"],
+            pattern: ["src/utility/normalize.ts"],
         },
         {
+            plugin: ["_base"],
             when: function (answers) {
-                return answers.css_features !== "css";
+                return (
+                    typeof answers["svg"] === "undefined" ||
+                    answers["ui-framework"] === "no"
+                );
             },
-            pattern: ["**/*.css"],
+            pattern: ["src/components/app-icon/index.tsx"],
         },
         {
+            plugin: ["_base"],
             when: function (answers) {
-                return answers.css_features !== "scss";
+                return answers["ui-framework"] !== "no";
             },
-            pattern: ["**/*.s@(c|a)ss"],
+            pattern: [
+                "src/components/breadcrumb/index.tsx",
+                "src/components/layout/index.tsx",
+                "src/components/menu/index.tsx",
+                "src/styles/global.css",
+            ],
         },
         {
+            plugin: ["_base"],
             when: function (answers) {
-                return !answers.features.includes("storybook");
+                return answers[`i18n-${answers["ui-framework"]}`] === "no";
             },
-            pattern: ["**/*.stories.tsx"],
-        },
-        {
-            when: function (answers) {
-                return answers.testing === "none";
-            },
-            pattern: ["**/src/**/*.@(spec|test).@(ts|tsx)"],
-        },
-        {
-            when: function (answers) {
-                return answers.testing === "jest";
-            },
-            pattern: ["**/src/**/*.@(spec|test).@(tsx)"],
-        },
-        {
-            plugin: ["mobx"],
-            when: function (answers) {
-                return answers.mobx_state_tree === "mobx-state-tree";
-            },
-            pattern: ["**/src/**/*.d.ts"],
+            pattern: [
+                "public/locales/de/common.json",
+                "public/locales/en/common.json",
+                "public/images/flags/de.svg",
+                "public/images/flags/en.svg",
+            ],
         },
     ],
 };

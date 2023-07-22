@@ -1,8 +1,7 @@
-export default function Home() {
-    return (
-        <main>
-            <h1><%= name %></h1>
-            <p>next cli prototype app</p>
-        </main>
-    );
+import { WelcomePage } from "@refinedev/core";
+
+export default function Index() {
+    return <WelcomePage />;
 }
+
+Index.noLayout = true;
