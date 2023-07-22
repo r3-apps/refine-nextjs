@@ -7,6 +7,11 @@ module.exports = {
             pageSize: 2,
             choices: [
                 {
+                    message: "Remult",
+                    name: "data-provider-remult",
+                    hint: "Installs Remult Data Provider.",
+                },
+                {
                     message: "REST API",
                     name: "data-provider-custom-json-rest",
                     hint: "Installs REST API Data Provider.",
