@@ -11,51 +11,51 @@ module.exports = {
                     name: "data-provider-remult",
                     hint: "Installs Remult Data Provider.",
                 },
-                {
-                    message: "REST API",
-                    name: "data-provider-custom-json-rest",
-                    hint: "Installs REST API Data Provider.",
-                },
-                {
-                    message: "GraphQL API",
-                    name: "data-provider-graphql",
-                    hint: "Installs GraphQL API Data Provider.",
-                },
-                {
-                    message: "Strapi v4",
-                    name: "data-provider-strapi-v4",
-                    hint: "Installs Strapi v4 Data Provider.",
-                },
-                {
-                    message: "nestjsx-crud",
-                    name: "data-provider-nestjsx-crud",
-                    hint: "Installs Nestjsx-crud Data Provider.",
-                },
-                {
-                    message: "Airtable",
-                    name: "data-provider-airtable",
-                    hint: "Installs Airtable Data Provider.",
-                },
-                {
-                    message: "Supabase",
-                    name: "data-provider-supabase",
-                    hint: "Installs Supabase Data Provider.",
-                },
-                {
-                    message: "Appwrite",
-                    name: "data-provider-appwrite",
-                    hint: "Installs Appwrite Data Provider.",
-                },
-                {
-                    message: "Hasura",
-                    name: "data-provider-hasura",
-                    hint: "Installs Hasura Data Provider.",
-                },
-                {
-                    message: "Medusa",
-                    name: "data-provider-medusa",
-                    hint: "Installs Medusa Data Provider.",
-                },
+                // {
+                //     message: "REST API",
+                //     name: "data-provider-custom-json-rest",
+                //     hint: "Installs REST API Data Provider.",
+                // },
+                // {
+                //     message: "GraphQL API",
+                //     name: "data-provider-graphql",
+                //     hint: "Installs GraphQL API Data Provider.",
+                // },
+                // {
+                //     message: "Strapi v4",
+                //     name: "data-provider-strapi-v4",
+                //     hint: "Installs Strapi v4 Data Provider.",
+                // },
+                // {
+                //     message: "nestjsx-crud",
+                //     name: "data-provider-nestjsx-crud",
+                //     hint: "Installs Nestjsx-crud Data Provider.",
+                // },
+                // {
+                //     message: "Airtable",
+                //     name: "data-provider-airtable",
+                //     hint: "Installs Airtable Data Provider.",
+                // },
+                // {
+                //     message: "Supabase",
+                //     name: "data-provider-supabase",
+                //     hint: "Installs Supabase Data Provider.",
+                // },
+                // {
+                //     message: "Appwrite",
+                //     name: "data-provider-appwrite",
+                //     hint: "Installs Appwrite Data Provider.",
+                // },
+                // {
+                //     message: "Hasura",
+                //     name: "data-provider-hasura",
+                //     hint: "Installs Hasura Data Provider.",
+                // },
+                // {
+                //     message: "Medusa",
+                //     name: "data-provider-medusa",
+                //     hint: "Installs Medusa Data Provider.",
+                // },
             ],
             default: "data-provider-remult",
         },
